@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cloudflare": "bunx @opennextjs/cloudflare build",
+    "preview": "bunx @opennextjs/cloudflare preview",
+    "deploy": "bunx @opennextjs/cloudflare deploy",
     "start": "next start",
     "lint": "next lint"
   },
