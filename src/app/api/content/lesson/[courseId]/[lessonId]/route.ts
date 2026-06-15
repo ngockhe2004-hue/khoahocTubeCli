@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { saveLesson, getLesson, deleteLesson } from '@/lib/content-loader';
 import type { UpdateLessonPayload } from '@/lib/types';
 
-interface Context {
-  params: { courseId: string; lessonId: string };
-}
+type Context = {
+  params: Promise<{ courseId: string; lessonId: string }>;
+};
 
 export async function GET(_request: NextRequest, { params }: Context) {
-  const lesson = getLesson(params.courseId, params.lessonId);
+  const { courseId, lessonId } = await params;
+  const lesson = getLesson(courseId, lessonId);
   if (!lesson) {
     return NextResponse.json({ error: 'Không tìm thấy bài học' }, { status: 404 });
   }
@@ -16,6 +17,7 @@ export async function GET(_request: NextRequest, { params }: Context) {
 
 export async function PUT(request: NextRequest, { params }: Context) {
   try {
+    const { courseId, lessonId } = await params;
     const body: UpdateLessonPayload = await request.json();
     const { lesson } = body;
 
@@ -23,18 +25,16 @@ export async function PUT(request: NextRequest, { params }: Context) {
       return NextResponse.json({ error: 'Thiếu dữ liệu bài học' }, { status: 400 });
     }
 
-    // Verify lesson exists
-    const existing = getLesson(params.courseId, params.lessonId);
+    const existing = getLesson(courseId, lessonId);
     if (!existing) {
       return NextResponse.json(
-        { error: `Không tìm thấy bài học "${params.lessonId}"` },
+        { error: `Không tìm thấy bài học "${lessonId}"` },
         { status: 404 }
       );
     }
 
-    // Keep ID consistent
-    const updated = { ...lesson, id: params.lessonId };
-    saveLesson(params.courseId, updated);
+    const updated = { ...lesson, id: lessonId };
+    saveLesson(courseId, updated);
     return NextResponse.json({ success: true, lesson: updated });
   } catch (error) {
     console.error('[API] PUT /api/content/lesson/[courseId]/[lessonId]:', error);
@@ -44,7 +44,8 @@ export async function PUT(request: NextRequest, { params }: Context) {
 
 export async function DELETE(_request: NextRequest, { params }: Context) {
   try {
-    const deleted = deleteLesson(params.courseId, params.lessonId);
+    const { courseId, lessonId } = await params;
+    const deleted = deleteLesson(courseId, lessonId);
     if (!deleted) {
       return NextResponse.json({ error: 'Không tìm thấy bài học' }, { status: 404 });
     }

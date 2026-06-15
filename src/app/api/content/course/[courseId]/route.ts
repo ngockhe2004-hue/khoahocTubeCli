@@ -2,19 +2,20 @@ import { NextRequest, NextResponse } from 'next/server';
 import { saveCourse, getCourse } from '@/lib/content-loader';
 import type { UpdateCoursePayload } from '@/lib/types';
 
-interface Context {
-  params: { courseId: string };
-}
+type Context = {
+  params: Promise<{ courseId: string }>;
+};
 
 export async function PUT(request: NextRequest, { params }: Context) {
   try {
+    const { courseId } = await params;
     const body: UpdateCoursePayload = await request.json();
     const { course: updates } = body;
 
-    const existing = getCourse(params.courseId);
+    const existing = getCourse(courseId);
     if (!existing) {
       return NextResponse.json(
-        { error: `Không tìm thấy khóa học "${params.courseId}"` },
+        { error: `Không tìm thấy khóa học "${courseId}"` },
         { status: 404 }
       );
     }
@@ -29,7 +30,8 @@ export async function PUT(request: NextRequest, { params }: Context) {
 }
 
 export async function GET(_request: NextRequest, { params }: Context) {
-  const course = getCourse(params.courseId);
+  const { courseId } = await params;
+  const course = getCourse(courseId);
   if (!course) {
     return NextResponse.json({ error: 'Không tìm thấy khóa học' }, { status: 404 });
   }
