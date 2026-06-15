@@ -1,0 +1,52 @@
+{
+  "id": "03-hooks-quiz",
+  "type": "quiz",
+  "title": "Quiz: React Hooks",
+  "duration": "10 min",
+  "order": 3,
+  "questions": [
+    {
+      "id": "q1",
+      "q": "Hook nào dùng để quản lý state trong functional component?",
+      "options": ["useEffect", "useState", "useContext", "useReducer"],
+      "answer": 1,
+      "explain": "useState là hook cơ bản nhất để thêm state vào functional component."
+    },
+    {
+      "id": "q2",
+      "q": "useEffect với dependency array rỗng [] chạy khi nào?",
+      "options": [
+        "Mỗi lần component render",
+        "Chỉ khi state thay đổi",
+        "Chỉ một lần sau lần render đầu tiên",
+        "Không bao giờ chạy"
+      ],
+      "answer": 2,
+      "explain": "useEffect với [] chỉ chạy một lần sau khi component mount, tương đương componentDidMount."
+    },
+    {
+      "id": "q3",
+      "q": "Cú pháp đúng để destructure useState?",
+      "options": [
+        "const state, setState = useState(0)",
+        "const [state, setState] = useState(0)",
+        "const {state, setState} = useState(0)",
+        "const state = useState(0)"
+      ],
+      "answer": 1,
+      "explain": "useState trả về một array [value, setter], nên dùng array destructuring."
+    },
+    {
+      "id": "q4",
+      "q": "Rules of Hooks: Hooks phải được gọi ở đâu?",
+      "options": [
+        "Bên trong if/else statements",
+        "Bên trong loops",
+        "Top level của functional component",
+        "Bên trong nested functions"
+      ],
+      "answer": 2,
+      "explain": "Hooks phải được gọi ở top level, không được gọi trong conditions, loops hay nested functions."
+    }
+  ]
+}

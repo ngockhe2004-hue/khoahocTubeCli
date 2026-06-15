@@ -1,0 +1,16 @@
+{
+  "id": "typescript-basics",
+  "title": "TypeScript Cơ bản",
+  "description": "Học TypeScript từ zero đến hero với các bài tập thực hành",
+  "thumbnail": "/thumbnails/ts-basics.png",
+  "level": "beginner",
+  "tags": ["typescript", "javascript", "programming"],
+  "estimatedHours": 5,
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Giới thiệu",
+      "lessons": ["01-intro", "02-video", "03-code", "04-quiz"]
+    }
+  ]
+}

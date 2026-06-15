@@ -1,0 +1,8 @@
+{
+  "id": "01-what-is-react",
+  "type": "text",
+  "title": "React là gì?",
+  "duration": "8 min",
+  "order": 1,
+  "content": "# React là gì?\n\nReact là một **thư viện JavaScript** do Meta (Facebook) phát triển để xây dựng giao diện người dùng.\n\n## Đặc điểm chính\n\n- 🧩 **Component-based**: Tất cả mọi thứ đều là component\n- ⚡ **Virtual DOM**: Re-render hiệu quả\n- 🔄 **Declarative**: Mô tả UI, React lo phần còn lại\n- 🌐 **Learn once, write anywhere**: Web, Native, Server\n\n## Component đầu tiên\n\n```jsx\nfunction Hello({ name }: { name: string }) {\n  return <h1>Xin chào, {name}!</h1>;\n}\n\n// Sử dụng\n<Hello name=\"World\" />\n```\n\n## JSX là gì?\n\nJSX là cú pháp mở rộng cho phép viết HTML trong JavaScript:\n\n```jsx\n// JSX\nconst element = <h1 className=\"title\">Hello</h1>;\n\n// Sau khi compile ra JS\nconst element = React.createElement('h1', { className: 'title' }, 'Hello');\n```\n\n## Props và State\n\n| | Props | State |\n|---|---|---|\n| Ai quản lý | Parent | Bản thân component |\n| Có thể thay đổi | Không (readonly) | Có |\n| Mục đích | Nhận dữ liệu | Dữ liệu nội bộ |\n\n## Kết luận\n\nReact giúp bạn xây dựng UI **nhanh hơn**, **có thể tái sử dụng** và **dễ test**."
+}

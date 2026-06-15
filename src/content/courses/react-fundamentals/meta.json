@@ -1,0 +1,16 @@
+{
+  "id": "react-fundamentals",
+  "title": "React Fundamentals",
+  "description": "Nắm vững các khái niệm cơ bản của React: components, props, state, hooks và lifecycle",
+  "thumbnail": "/thumbnails/react.png",
+  "level": "intermediate",
+  "tags": ["react", "javascript", "frontend", "hooks"],
+  "estimatedHours": 8,
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "React Basics",
+      "lessons": ["01-what-is-react", "02-components", "03-hooks-quiz"]
+    }
+  ]
+}

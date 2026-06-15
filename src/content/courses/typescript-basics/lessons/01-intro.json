@@ -1,0 +1,8 @@
+{
+  "id": "01-intro",
+  "type": "text",
+  "title": "TypeScript là gì?",
+  "duration": "10 min",
+  "order": 1,
+  "content": "# TypeScript là gì?\n\nTypeScript là một **superset của JavaScript** được phát triển bởi Microsoft.\n\n## Tại sao dùng TypeScript?\n\n- ✅ Type safety - phát hiện lỗi sớm\n- ✅ IntelliSense tốt hơn\n- ✅ Code dễ đọc, dễ maintain\n- ✅ Hỗ trợ OOP đầy đủ\n\n## Ví dụ đơn giản\n\n```typescript\n// JavaScript\nfunction greet(name) {\n  return 'Hello ' + name;\n}\n\n// TypeScript\nfunction greet(name: string): string {\n  return `Hello ${name}`;\n}\n```\n\nTypeScript compile ra JavaScript thuần, chạy được ở mọi nơi.\n\n## Các kiểu dữ liệu cơ bản\n\n```typescript\n// Primitive types\nlet age: number = 25;\nlet name: string = 'Alice';\nlet isActive: boolean = true;\n\n// Arrays\nlet scores: number[] = [10, 20, 30];\nlet names: string[] = ['Alice', 'Bob'];\n\n// Objects\nlet user: { name: string; age: number } = {\n  name: 'Alice',\n  age: 25\n};\n```\n\n## TypeScript vs JavaScript\n\n| Tính năng | JavaScript | TypeScript |\n|-----------|------------|------------|\n| Static typing | ❌ | ✅ |\n| Type inference | ❌ | ✅ |\n| Interface | ❌ | ✅ |\n| Enum | ❌ | ✅ |\n| Generics | ❌ | ✅ |\n\n## Kết luận\n\nTypeScript giúp bạn viết code **an toàn hơn**, **dễ bảo trì hơn** và **ít bug hơn**. Đây là lý do tại sao TypeScript đang ngày càng phổ biến trong cộng đồng JavaScript."
+}

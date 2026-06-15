@@ -1,0 +1,40 @@
+{
+  "id": "04-quiz",
+  "type": "quiz",
+  "title": "Kiểm tra: TypeScript Basics",
+  "duration": "10 min",
+  "order": 4,
+  "questions": [
+    {
+      "id": "q1",
+      "q": "TypeScript là gì?",
+      "options": [
+        "Một framework JavaScript",
+        "Superset của JavaScript với static typing",
+        "Một database query language",
+        "Một CSS preprocessor"
+      ],
+      "answer": 1,
+      "explain": "TypeScript là superset của JavaScript, thêm static type checking vào JS."
+    },
+    {
+      "id": "q2",
+      "q": "Khai báo biến string trong TypeScript như thế nào?",
+      "options": [
+        "var name = 'test'",
+        "string name = 'test'",
+        "const name: string = 'test'",
+        "let name<string> = 'test'"
+      ],
+      "answer": 2,
+      "explain": "Syntax TypeScript: tên biến theo sau dấu ':' và kiểu dữ liệu."
+    },
+    {
+      "id": "q3",
+      "q": "TypeScript compile ra ngôn ngữ gì?",
+      "options": ["Python", "Java", "JavaScript", "WebAssembly"],
+      "answer": 2,
+      "explain": "TypeScript luôn compile ra JavaScript thuần để chạy trên browser/Node.js."
+    }
+  ]
+}

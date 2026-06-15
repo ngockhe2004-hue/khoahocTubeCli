@@ -1,0 +1,16 @@
+{
+  "id": "02-video",
+  "type": "video",
+  "title": "Cài đặt môi trường",
+  "duration": "15 min",
+  "order": 2,
+  "videoUrl": "https://www.youtube.com/embed/BwuLxPH8IDs",
+  "description": "Hướng dẫn cài đặt Node.js, TypeScript compiler và VSCode",
+  "chapters": [
+    { "time": 0, "title": "Giới thiệu" },
+    { "time": 60, "title": "Cài đặt Node.js" },
+    { "time": 180, "title": "Cài TypeScript" },
+    { "time": 300, "title": "Cấu hình VSCode" },
+    { "time": 480, "title": "Hello World đầu tiên" }
+  ]
+}

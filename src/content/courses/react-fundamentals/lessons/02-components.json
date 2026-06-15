@@ -1,0 +1,17 @@
+{
+  "id": "02-components",
+  "type": "code",
+  "title": "Tạo Component đầu tiên",
+  "duration": "25 min",
+  "order": 2,
+  "language": "tsx",
+  "description": "Thực hành tạo React component với TypeScript",
+  "instructions": "Tạo một component `UserCard` hiển thị thông tin người dùng:\n1. Nhận props: name (string), email (string), role (string)\n2. Hiển thị avatar placeholder với chữ cái đầu của tên\n3. Hiển thị name, email và role badge\n4. Dùng TypeScript interface cho props",
+  "starterCode": "interface UserCardProps {\n  name: string;\n  email: string;\n  role: string;\n}\n\nfunction UserCard({ name, email, role }: UserCardProps) {\n  // TODO: Lấy chữ cái đầu của tên\n  const initial = '';\n  \n  return (\n    <div className=\"card\">\n      {/* TODO: Avatar với initial */}\n      <div className=\"avatar\">{initial}</div>\n      \n      {/* TODO: Thông tin người dùng */}\n      <div>\n        <h3>{/* name */}</h3>\n        <p>{/* email */}</p>\n        <span>{/* role */}</span>\n      </div>\n    </div>\n  );\n}\n\nexport default UserCard;\n",
+  "solution": "interface UserCardProps {\n  name: string;\n  email: string;\n  role: string;\n}\n\nfunction UserCard({ name, email, role }: UserCardProps) {\n  const initial = name.charAt(0).toUpperCase();\n  \n  return (\n    <div className=\"card\">\n      <div className=\"avatar\">{initial}</div>\n      <div>\n        <h3>{name}</h3>\n        <p>{email}</p>\n        <span className=\"badge\">{role}</span>\n      </div>\n    </div>\n  );\n}\n\nexport default UserCard;\n",
+  "hints": [
+    "Dùng name.charAt(0) để lấy chữ cái đầu",
+    "toUpperCase() để chuyển thành chữ hoa",
+    "Đặt nội dung vào giữa các JSX tags: <h3>{name}</h3>"
+  ]
+}

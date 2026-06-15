@@ -1,0 +1,17 @@
+{
+  "id": "03-code",
+  "type": "code",
+  "title": "Bài tập: Khai báo biến",
+  "duration": "20 min",
+  "order": 3,
+  "language": "typescript",
+  "description": "Thực hành khai báo biến với các kiểu dữ liệu cơ bản trong TypeScript",
+  "instructions": "Khai báo các biến sau với đúng kiểu dữ liệu TypeScript:\n1. Biến `name` kiểu string, giá trị là tên của bạn\n2. Biến `age` kiểu number, giá trị là tuổi của bạn\n3. Biến `isStudent` kiểu boolean, giá trị true\n4. Biến `scores` là mảng number",
+  "starterCode": "// Khai báo các biến với đúng TypeScript types\nconst name: string = ''; // TODO: điền tên của bạn\nconst age: number = 0;   // TODO: điền tuổi\nconst isStudent: boolean = false; // TODO: sửa thành true\nconst scores: number[] = []; // TODO: thêm vài điểm số\n\n// Xuất kết quả\nconsole.log(`Tên: ${name}, Tuổi: ${age}`);\nconsole.log(`Là học sinh: ${isStudent}`);\nconsole.log(`Điểm: ${scores.join(', ')}`);\n",
+  "solution": "const name: string = 'Nguyễn Văn A';\nconst age: number = 25;\nconst isStudent: boolean = true;\nconst scores: number[] = [8, 9, 7, 10];\n\nconsole.log(`Tên: ${name}, Tuổi: ${age}`);\nconsole.log(`Là học sinh: ${isStudent}`);\nconsole.log(`Điểm: ${scores.join(', ')}`);\n",
+  "hints": [
+    "String dùng dấu nháy đơn hoặc đôi: 'text' hoặc \"text\"",
+    "Boolean chỉ có 2 giá trị: true hoặc false",
+    "Mảng number: [1, 2, 3]"
+  ]
+}
