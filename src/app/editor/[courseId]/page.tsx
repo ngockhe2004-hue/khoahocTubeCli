@@ -6,7 +6,7 @@ import { ArrowLeft, Plus, Eye, FileText, Video, Code2, HelpCircle, Clock, Chevro
 import type { LessonType } from '@/lib/types';
 
 interface Props {
-  params: { courseId: string };
+  params: Promise<{ courseId: string }>;
 }
 
 export const dynamic = 'force-dynamic';
@@ -25,11 +25,12 @@ const typeColors: Record<LessonType, string> = {
   quiz: 'text-orange-500 bg-orange-50',
 };
 
-export default function EditCoursePage({ params }: Props) {
-  const course = getCourse(params.courseId);
+export default async function EditCoursePage({ params }: Props) {
+  const { courseId } = await params;
+  const course = getCourse(courseId);
   if (!course) notFound();
 
-  const lessons = getAllLessons(params.courseId);
+  const lessons = getAllLessons(courseId);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

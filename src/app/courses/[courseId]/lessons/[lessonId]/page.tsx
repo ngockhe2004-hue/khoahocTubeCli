@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, BookOpen, FileText, Video, Code2, HelpCircle } f
 import type { LessonType } from '@/lib/types';
 
 interface Props {
-  params: { courseId: string; lessonId: string };
+  params: Promise<{ courseId: string; lessonId: string }>;
 }
 
 export const dynamic = 'force-dynamic';
@@ -27,14 +27,15 @@ const typeColors: Record<LessonType, string> = {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const lesson = getLesson(params.courseId, params.lessonId);
+  const { courseId, lessonId } = await params;
+  const lesson = getLesson(courseId, lessonId);
   return {
     title: lesson ? `${lesson.title} · LMS` : 'Bài học · LMS',
   };
 }
 
-export default function LessonPage({ params }: Props) {
-  const { courseId, lessonId } = params;
+export default async function LessonPage({ params }: Props) {
+  const { courseId, lessonId } = await params;
 
   const course = getCourse(courseId);
   const lesson = getLesson(courseId, lessonId);
@@ -60,7 +61,7 @@ export default function LessonPage({ params }: Props) {
         courseId={courseId}
         modules={course.modules}
         lessons={allLessons}
-        completedLessons={[]} // Will be hydrated client-side inside Sidebar
+        completedLessons={[]}
       />
 
       {/* Main content */}

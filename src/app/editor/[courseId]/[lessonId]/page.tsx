@@ -6,19 +6,22 @@ import LessonViewer from '@/components/lesson/LessonViewer';
 import { ArrowLeft, Eye } from 'lucide-react';
 
 interface Props {
-  params: { courseId: string; lessonId: string };
-  searchParams: { preview?: string };
+  params: Promise<{ courseId: string; lessonId: string }>;
+  searchParams: Promise<{ preview?: string }>;
 }
 
 export const dynamic = 'force-dynamic';
 
-export default function EditLessonPage({ params, searchParams }: Props) {
-  const course = getCourse(params.courseId);
-  const lesson = getLesson(params.courseId, params.lessonId);
+export default async function EditLessonPage({ params, searchParams }: Props) {
+  const { courseId, lessonId } = await params;
+  const { preview } = await searchParams;
+
+  const course = getCourse(courseId);
+  const lesson = getLesson(courseId, lessonId);
 
   if (!course || !lesson) notFound();
 
-  const showPreview = searchParams.preview === '1';
+  const showPreview = preview === '1';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -29,7 +32,7 @@ export default function EditLessonPage({ params, searchParams }: Props) {
           Editor
         </Link>
         <span>/</span>
-        <Link href={`/editor/${params.courseId}`} className="hover:text-blue-600">
+        <Link href={`/editor/${courseId}`} className="hover:text-blue-600">
           {course.title}
         </Link>
         <span>/</span>
@@ -47,7 +50,7 @@ export default function EditLessonPage({ params, searchParams }: Props) {
             {showPreview ? 'Ẩn preview' : 'Xem preview'}
           </Link>
           <Link
-            href={`/courses/${params.courseId}/lessons/${params.lessonId}`}
+            href={`/courses/${courseId}/lessons/${lessonId}`}
             target="_blank"
             className="inline-flex items-center gap-2 text-sm text-blue-600 border border-blue-200 px-3 py-2 rounded-xl hover:bg-blue-50 transition-colors font-medium"
           >
@@ -59,7 +62,7 @@ export default function EditLessonPage({ params, searchParams }: Props) {
       <div className={`grid gap-8 ${showPreview ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1'}`}>
         {/* Editor */}
         <div>
-          <LessonEditor courseId={params.courseId} initialLesson={lesson} />
+          <LessonEditor courseId={courseId} initialLesson={lesson} />
         </div>
 
         {/* Preview */}
@@ -73,7 +76,7 @@ export default function EditLessonPage({ params, searchParams }: Props) {
                 </h2>
                 <p className="text-xs text-gray-400">Đây là bản xem trước đã lưu. Lưu để cập nhật.</p>
               </div>
-              <LessonViewer lesson={lesson} courseId={params.courseId} />
+              <LessonViewer lesson={lesson} courseId={courseId} />
             </div>
           </div>
         )}

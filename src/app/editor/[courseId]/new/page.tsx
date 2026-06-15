@@ -5,13 +5,14 @@ import LessonEditor from '@/components/editor/LessonEditor';
 import { ArrowLeft } from 'lucide-react';
 
 interface Props {
-  params: { courseId: string };
+  params: Promise<{ courseId: string }>;
 }
 
 export const dynamic = 'force-dynamic';
 
-export default function NewLessonPage({ params }: Props) {
-  const course = getCourse(params.courseId);
+export default async function NewLessonPage({ params }: Props) {
+  const { courseId } = await params;
+  const course = getCourse(courseId);
   if (!course) notFound();
 
   return (
@@ -23,7 +24,7 @@ export default function NewLessonPage({ params }: Props) {
           Editor
         </Link>
         <span>/</span>
-        <Link href={`/editor/${params.courseId}`} className="hover:text-blue-600">
+        <Link href={`/editor/${courseId}`} className="hover:text-blue-600">
           {course.title}
         </Link>
         <span>/</span>
@@ -32,7 +33,7 @@ export default function NewLessonPage({ params }: Props) {
 
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Tạo bài học mới</h1>
 
-      <LessonEditor courseId={params.courseId} isNew />
+      <LessonEditor courseId={courseId} isNew />
     </div>
   );
 }

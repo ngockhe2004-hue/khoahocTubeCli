@@ -6,23 +6,25 @@ import { LevelBadge } from '@/components/ui/Badge';
 import { Clock, BookOpen, ArrowLeft, PenSquare } from 'lucide-react';
 
 interface Props {
-  params: { courseId: string };
+  params: Promise<{ courseId: string }>;
 }
 
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props) {
-  const course = getCourse(params.courseId);
+  const { courseId } = await params;
+  const course = getCourse(courseId);
   return {
     title: course ? `${course.title} · LMS` : 'Khóa học · LMS',
   };
 }
 
-export default function CourseDetailPage({ params }: Props) {
-  const course = getCourse(params.courseId);
+export default async function CourseDetailPage({ params }: Props) {
+  const { courseId } = await params;
+  const course = getCourse(courseId);
   if (!course) notFound();
 
-  const lessons = getAllLessons(params.courseId);
+  const lessons = getAllLessons(courseId);
   const firstLesson = lessons[0];
 
   return (
